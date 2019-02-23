@@ -1,4 +1,3 @@
-
 def T_factory(env):
     def get_T(prefix):
         def T(template_name, **kwargs):
@@ -6,5 +5,7 @@ def T_factory(env):
             template = env.get_template(template_name)
             kwargs['T'] = T
             return template.render(**kwargs)
+
         return T
+
     return get_T

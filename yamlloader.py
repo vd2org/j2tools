@@ -1,16 +1,14 @@
 import logging
-
 from os.path import exists, getmtime
 
 from jinja2 import BaseLoader, TemplateNotFound
+from ruamel.yaml import load, BaseLoader as Loader
 
 # from yaml import load
 # try:
 #     from yaml import CLoader as Loader
 # except ImportError:
 #     from yaml import Loader
-
-from ruamel.yaml import load, BaseLoader as Loader
 
 logger = logging.getLogger('j2tools.yamlloader')
 
