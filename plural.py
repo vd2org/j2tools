@@ -42,9 +42,9 @@ class Rules:
             return cls.plural_russian(n)
         if lang in ('cs', 'sk'):
             return cls.plural_czech(n)
-        if lang in ('is'):
+        if lang in ('is',):
             return cls.plural_icelandic(n)
-        if lang in ('pl'):
+        if lang in ('pl',):
             return cls.plural_polish(n)
 
     @classmethod
@@ -57,9 +57,9 @@ class Rules:
             return 3
         if lang in ('cs', 'sk'):
             return 3
-        if lang in ('is'):
+        if lang in ('is',):
             return 2
-        if lang in ('pl'):
+        if lang in ('pl',):
             return 3
 
 
