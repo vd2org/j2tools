@@ -1,3 +1,8 @@
+# Copyright (C) 2017-2019 by Vd.
+# This file is part of Periodic package.
+# Periodic is released under the MIT License (see LICENSE).
+
+
 def T_factory(env):
     def get_T(prefix):
         def T(template_name, **kwargs):
