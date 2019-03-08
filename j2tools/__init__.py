@@ -4,8 +4,9 @@
 
 
 from .plural import plural
-from .t import T_factory
+from .t import t_factory
 from .unicode_char import unicode_char
+from .elapsed import elapsed, remaining
 from .yamlloader import YamlLoader
 
 
