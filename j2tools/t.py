@@ -1,6 +1,7 @@
 # Copyright (C) 2017-2019 by Vd.
-# This file is part of Periodic package.
-# Periodic is released under the MIT License (see LICENSE).
+# This file is part of j2tools package.
+# j2tools is released under the MIT License (see LICENSE).
+
 
 from jinja2 import Environment
 
