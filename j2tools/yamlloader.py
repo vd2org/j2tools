@@ -3,27 +3,26 @@
 # Periodic is released under the MIT License (see LICENSE).
 
 
-import logging
 from os.path import exists, getmtime
 
 from jinja2 import BaseLoader, TemplateNotFound
 from ruamel.yaml import load, BaseLoader as Loader
 
-# from yaml import load
-# try:
-#     from yaml import CLoader as Loader
-# except ImportError:
-#     from yaml import Loader
-
-logger = logging.getLogger('j2tools.yamlloader')
-
 
 class YamlLoader(BaseLoader):
     def __init__(self, path, separator='/'):
-        self.path = path
-        self.separator = separator
+        self.__path = path
+        self.__separator = separator
         self.__data = dict()
         self.__mtime = None
+
+    @property
+    def separator(self):
+        return self.__separator
+
+    @property
+    def path(self):
+        return self.__path
 
     def get_source(self, environment, template):
         mtime = getmtime(self.path)
