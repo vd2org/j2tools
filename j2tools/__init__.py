@@ -3,7 +3,11 @@
 # Periodic is released under the MIT License (see LICENSE).
 
 
-from .yamlloader import YamlLoader
 from .plural import plural
 from .t import T_factory
 from .unicode_char import unicode_char
+from .yamlloader import YamlLoader
+
+
+def version():
+    return "2019.03"
