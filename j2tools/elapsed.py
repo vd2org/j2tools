@@ -7,7 +7,19 @@ from datetime import datetime
 
 
 def elapsed(from_time: datetime, *, show_seconds: bool = False, to_time: datetime = None,
-            d: str = 'd', h: str = 'h', m: str = 'm', s: str = 's'):
+            d: str = 'd', h: str = 'h', m: str = 'm', s: str = 's') -> str:
+    """\
+
+    :param from_time: time that elapsed from
+    :param show_seconds: add seconds to string
+    :param to_time: time to which to count(default - datetime.now())
+    :param d: char for days
+    :param h: char for days
+    :param m: char for minutes
+    :param s: char for seconds
+    :return: string of calculated timedelta
+    """
+
     to_time = to_time if to_time else datetime.utcnow()
     delta = to_time - from_time
 
@@ -34,6 +46,19 @@ def elapsed(from_time: datetime, *, show_seconds: bool = False, to_time: datetim
 
 
 def remaining(to_time: datetime, *, show_seconds: bool = False, from_time: datetime = None,
-              d: str = 'd', h: str = 'h', m: str = 'm', s: str = 's'):
-    from_time = from_time if from_time else datetime.utcnow()
-    return elapsed(from_time, show_seconds=show_seconds, to_time=to_time, d=d, h=h, m=m, s=s)
+              d: str = 'd', h: str = 'h', m: str = 'm', s: str = 's') -> str:
+    """\
+
+    :param to_time: datetime that remaining to
+    :param show_seconds: add seconds to string
+    :param from_time: datetime from which to count(default - datetime.now())
+    :param d: char for days
+    :param h: char for days
+    :param m: char for minutes
+    :param s: char for seconds
+    :return: string of calculated timedelta
+    """
+
+    return elapsed(from_time if from_time else datetime.utcnow(),
+                   show_seconds=show_seconds, to_time=to_time,
+                   d=d, h=h, m=m, s=s)
