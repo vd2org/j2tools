@@ -10,18 +10,38 @@ from ruamel.yaml import load, BaseLoader as Loader
 
 
 class YamlLoader(BaseLoader):
-    def __init__(self, path, separator='/'):
+    def __init__(self, path: str, separator: str = '/'):
+        """\
+        YamlLoader loads jinja2 templates from fields of yaml-file.
+        This allows to keep all templates in one file. Useful when
+        you have a large number of small templates. For example,
+        strings for Telegram bots, etc.
+
+        Supports autoreload in debug mode.
+
+        :param path: path to yaml-file
+        :param separator: fields separator
+        """
+
         self.__path = path
         self.__separator = separator
         self.__data = dict()
         self.__mtime = None
 
     @property
-    def separator(self):
+    def separator(self) -> str:
+        """
+
+        :return: Using separator
+        """
         return self.__separator
 
     @property
-    def path(self):
+    def path(self) -> str:
+        """
+
+        :return: Using file path
+        """
         return self.__path
 
     def get_source(self, environment, template):
