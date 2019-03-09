@@ -3,9 +3,9 @@
 # j2tools is released under the MIT License (see LICENSE).
 
 
-from .plural import plural
+from .plural import plural, languages
 from .t import t_factory
-from .unicode_char import unicode_char
+from .uchar import uchar
 from .elapsed import elapsed, remaining
 from .yamlloader import YamlLoader
 
