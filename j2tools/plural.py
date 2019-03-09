@@ -3,6 +3,9 @@
 # j2tools is released under the MIT License (see LICENSE).
 
 
+__all__ = ('languages', 'plural')
+
+
 class Rules:
     @classmethod
     def plural_english(cls, n):
@@ -67,9 +70,34 @@ class Rules:
         if lang in ('pl',):
             return 3
 
+    @classmethod
+    def languages(cls):
+        return ('da', 'de', 'en', 'es', 'fi', 'el', 'he',
+                'hu', 'it', 'nl', 'no', 'pt', 'sv', 'fr',
+                'tl', 'pt-br', 'hr', 'ru', 'cs', 'sk',
+                'is', 'pl')
 
-def plural(statement, lang, *words):
+
+def languages():
+    """\
+
+    :return: list of supported language-codes
+    """
+    return Rules.languages()
+
+
+def plural(number: int, lang: str, *words) -> str:
+    """\
+
+    :param number: value for plural
+    :param lang: select plural language rules
+    :param words: 2 or 3 variants of word that need to be selected by language rules
+    :return: str, contains proper variant of words
+    """
+    if lang not in Rules.languages():
+        raise ValueError("Unknown language code '{}'".format(lang))
+
     if Rules.variants(lang) != len(words):
         raise ValueError("len of plural formats for '{}' must be '{}'".format(lang, Rules.variants(lang)))
 
-    return words[Rules.plural(lang, statement)]
+    return words[Rules.plural(lang, number)]
