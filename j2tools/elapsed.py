@@ -9,6 +9,9 @@ from datetime import datetime
 def elapsed(from_time: datetime, *, show_seconds: bool = False, to_time: datetime = None,
             d: str = 'd', h: str = 'h', m: str = 'm', s: str = 's') -> str:
     """\
+    Calculates and formats elapsed time to string like this:
+
+    `25d 4h 3m 35s`
 
     :param from_time: time that elapsed from
     :param show_seconds: add seconds to string
@@ -48,6 +51,9 @@ def elapsed(from_time: datetime, *, show_seconds: bool = False, to_time: datetim
 def remaining(to_time: datetime, *, show_seconds: bool = False, from_time: datetime = None,
               d: str = 'd', h: str = 'h', m: str = 'm', s: str = 's') -> str:
     """\
+    Calculates and formats remaining time to string like this:
+
+    `25d 4h 3m 35s`
 
     :param to_time: datetime that remaining to
     :param show_seconds: add seconds to string
