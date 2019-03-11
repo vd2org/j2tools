@@ -1,6 +1,12 @@
 # j2tools
 Useful tools for jinja2
 
+## Install
+
+```bash
+pip install j2tools
+```
+
 ## YamlLoader
 
 YamlLoader is template loader for jinja2 template framework.
@@ -68,8 +74,8 @@ from j2tools import YamlLoader
 from j2tools import t_factory
 
 loader = PrefixLoader({
-                    'en': YamlLoader('templates_en.yaml'),
-                    'ru': YamlLoader('templates_ru.yaml'),})
+                       'en': YamlLoader('templates_en.yaml'),
+                       'ru': YamlLoader('templates_ru.yaml'),})
   
 jinja = Environment(loader=loader)
 get_t = t_factory(jinja)
@@ -90,6 +96,35 @@ print_templates(get_t('ru'), 'Иван')
 # Expected output:
 # Привет, Иван!
 # Пока, Иван!
+``` 
+
+## plural
+
+`plural` is jinja2 filter function for easy text pluralization.
+
+#### Example:
+
+```yaml
+# templates.yaml
+info:
+  users: |
+    System have {{users}} active {{users|plural('en','user','users')}}.
+```
+
+```python
+# main.py
+from jinja2 import Environment
+from j2tools import YamlLoader
+from j2tools import plural
+
+jinja = Environment(loader=YamlLoader('templates.yaml'))
+jinja.filters['plural'] = plural
+
+template1 = jinja.get_template('info/users')
+rendered1 = template1.render(users=1)
+print(rendered1) # System have 1 active user.
+rendered2 = template1.render(users=23)
+print(rendered2) # System have 23 active users.
 ``` 
 
 ## elapsed and remaining
@@ -130,35 +165,6 @@ print(rendered1) # System uptime: 25d 4h 3m 35s.
 template2 = jinja.get_template('info/newyear')
 rendered2 = template2.render(newyear=newyear)
 print(rendered2) # To next year remaining 295d 10h 13m 10s!
-``` 
-
-## plural
-
-`plural` is jinja2 filter function for easy text pluralization.
-
-#### Example:
-
-```yaml
-# templates.yaml
-info:
-  users: |
-    System have {{users}} active {{users|plural('en','user','users')}}.
-```
-
-```python
-# main.py
-from jinja2 import Environment
-from j2tools import YamlLoader
-from j2tools import plural
-
-jinja = Environment(loader=YamlLoader('templates.yaml'))
-jinja.filters['plural'] = plural
-
-template1 = jinja.get_template('info/users')
-rendered1 = template1.render(users=1)
-print(rendered1) # System have 1 active user.
-rendered2 = template1.render(users=23)
-print(rendered2) # System have 23 active users.
 ``` 
 
 ## uchar
