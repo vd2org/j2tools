@@ -88,6 +88,7 @@ def languages():
 
 def plural(number: int, lang: str, *words) -> str:
     """\
+    jinja2 filter function for easy text pluralization.
 
     :param number: value for plural
     :param lang: select plural language rules
