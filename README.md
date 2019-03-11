@@ -182,7 +182,7 @@ from j2tools import YamlLoader
 from j2tools import uchar
 
 jinja = Environment(loader=YamlLoader('templates.yaml'))
-jinja.filters['UN'] = uchar
+jinja.globals['UN'] = uchar
 
 template1 = jinja.get_template('info/users')
 rendered1 = template1.render(username='John Doe')
