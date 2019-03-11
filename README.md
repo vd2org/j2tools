@@ -7,11 +7,15 @@ Useful tools for jinja2
 pip install j2tools
 ```
 
+## Testing
+
+_coming soon_
+
 ## YamlLoader
 
-YamlLoader is template loader for jinja2 template framework.
-It's loading templates from yaml-files. Useful when you need
-to store many small templates in one file.
+YamlLoader is a template loader for jinja2 template framework.
+It loads templates from yaml-files. Useful when you need to
+store many small templates in one file.
 
 #### Example:
 
@@ -43,7 +47,7 @@ print(rendered2) # Goodbye, John Doe!
 
 ## t_factory
 
-t_facotory is small tool helps load prefixed templates easy.
+t_facotory is a small tool which helps prefixed templates easily.
 
 See examples below.
 
@@ -169,8 +173,8 @@ print(rendered2) # To next year remaining 295d 10h 13m 10s!
 
 ## uchar
 
-Simple jinja2 function for insert unicode characters by unicode names.
-Very useful to inserting emoji.
+Simple jinja2 function to insert unicode characters
+by unicode names. Very useful for inserting emoji.
 
 #### Example:
 
